@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen - Medieval RP</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Garamond', serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .loading-container {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 50%;
+            margin: 30px auto;
+            background: #333;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 20px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #ffd700, #ff8c00);
+            transition: width 0.5s ease-in-out;
+        }
+
+        .rules {
+            margin-top: 40px;
+            text-align: left;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rules h2 {
+            text-align: center;
+            text-shadow: 2px 2px 4px #000;
+            font-size: 2rem;
+        }
+
+        .rules ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rules ul li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="loading-container">
+        <h1>Bienvenue sur le MédiévalRP de Crystallis !</h1>
+        <p>Chargement des ressources, veuillez patienter...</p>
+        <div class="progress-bar">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+        <div class="rules">
+            <h2>Règles du serveur</h2>
+            <ul>
+                <li>1. Respectez les autres joueurs.</li>
+                <li>2. Pas de triche ni d'exploitation de bugs.</li>
+                <li>3. Jouez votre rôle de manière cohérente.</li>
+                <li>4. Pas de langage offensant ou discriminatoire.</li>
+                <li>5. Suivez les consignes des administrateurs.</li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        © 2025 Crystallis Medieval RP. Tous droits réservés.
+    </footer>
+
+    <script>
+        let progress = 0;
+        const progressBarFill = document.getElementById('progress-bar-fill');
+
+        const loadingInterval = setInterval(() => {
+            progress += 10;
+            if (progress > 100) {
+                progress = 100;
+                clearInterval(loadingInterval);
+            }
+            progressBarFill.style.width = `${progress}%`;
+        }, 500);
+
+        // Exemple d'ajout de musique de fond
+        const audio = new Audio('music.mp3'); // Remplacez 'music.mp3' par le fichier souhaité
+        audio.loop = true;
+        audio.volume = 0.5;
+        audio.play();
+    </script>
+</body>
+</html>
